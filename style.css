@@ -1,346 +1,73 @@
-/* ベースレイアウト */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  margin: 0;
-  padding: 0;
-}
+/* style.css */
+/* Garden-QA Engine v1 */
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    sans-serif;
-  line-height: 1.6;
-  background-color: #f5f5f7;
-  color: #222;
-}
-
-/* ヘッダ */
-.app-header {
-  background: linear-gradient(120deg, #0f766e, #22c55e);
-  color: #fff;
-  padding: 1.5rem 1rem;
-}
-
-.app-header-inner {
-  max-width: 960px;
-  margin: 0 auto;
-}
-
-.app-header h1 {
-  margin: 0;
-  font-size: 1.6rem;
-}
-
-.app-subtitle {
-  margin: 0.3rem 0 0.6rem;
-  font-size: 0.9rem;
-  opacity: 0.9;
-}
-
-/* DBステータス */
-.db-status {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.2rem 0.6rem;
-  border-radius: 999px;
-  font-size: 0.8rem;
-  background-color: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-}
-
-.db-status[data-status='loading'] {
-  background-color: rgba(248, 250, 252, 0.1);
-}
-
-.db-status[data-status='ok'] {
-  background-color: rgba(34, 197, 94, 0.2);
-}
-
-.db-status[data-status='error'] {
-  background-color: rgba(248, 113, 113, 0.25);
-}
-
-/* メインコンテンツ */
-.app-main {
-  max-width: 960px;
-  margin: 1.5rem auto;
-  padding: 0 1rem 3rem;
-  display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-  grid-template-rows: auto auto;
-  gap: 1.5rem;
-}
-
-.qa-panel {
-  grid-column: 1 / -1;
-}
-
-.answer-panel {
-  grid-column: 1 / 2;
-}
-
-.candidates-panel {
-  grid-column: 2 / 3;
-}
-
-@media (max-width: 800px) {
-  .app-main {
-    display: block;
-  }
-
-  .answer-panel,
-  .candidates-panel {
-    margin-top: 1.5rem;
-  }
-}
-
-/* セクション共通 */
-.qa-panel,
-.answer-panel,
-.candidates-panel {
-  background-color: #fff;
-  border-radius: 0.8rem;
-  padding: 1rem 1.2rem 1.2rem;
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
-}
-
-.qa-panel h2,
-.answer-panel h2,
-.candidates-panel h2 {
-  margin-top: 0;
-  font-size: 1.2rem;
-}
-
-/* フォーム */
-.question-form {
-  margin-top: 0.5rem;
-}
-
-.field-label {
-  display: block;
-  font-size: 0.9rem;
-  margin-bottom: 0.3rem;
-}
-
-.question-input {
-  width: 100%;
-  font-family: inherit;
-  border-radius: 0.6rem;
-  border: 1px solid #d4d4d8;
-  padding: 0.6rem 0.75rem;
-  resize: vertical;
-  min-height: 5rem;
-  font-size: 0.95rem;
-}
-
-.question-input:focus {
-  outline: none;
-  border-color: #22c55e;
-  box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.4);
-}
-
-.form-actions {
-  margin-top: 0.6rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.primary-button {
-  border: none;
-  border-radius: 999px;
-  padding: 0.45rem 1.3rem;
-  font-size: 0.95rem;
-  cursor: pointer;
-  background: linear-gradient(120deg, #22c55e, #14b8a6);
-  color: #fff;
-  font-weight: 600;
-  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
-  transition: transform 0.05s ease, box-shadow 0.05s ease,
-    filter 0.05s ease;
-}
-
-.primary-button:hover {
-  filter: brightness(1.05);
-  transform: translateY(-1px);
-  box-shadow: 0 10px 24px rgba(16, 185, 129, 0.45);
-}
-
-.primary-button:active {
-  transform: translateY(0);
-  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.3);
-}
-
-.primary-button:disabled {
-  opacity: 0.6;
-  cursor: default;
-  box-shadow: none;
-}
-
-.loading-indicator {
-  font-size: 0.85rem;
-  color: #4b5563;
-}
-
-/* 回答表示 */
-.answer-output {
-  font-size: 0.95rem;
-}
-
-.answer-block {
-  border-radius: 0.7rem;
-  border: 1px solid #e4e4e7;
-  padding: 0.8rem 0.9rem;
-  background-color: #f9fafb;
-}
-
-.answer-block + .answer-block {
-  margin-top: 0.75rem;
-}
-
-.answer-header {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 0.3rem;
-  margin-bottom: 0.5rem;
-}
-
-.answer-title {
-  margin: 0;
-  font-size: 1rem;
-}
-
-.answer-meta {
-  font-size: 0.8rem;
-  color: #4b5563;
-  display: flex;
-  gap: 0.6rem;
-}
-
-.answer-question h4,
-.answer-body h4,
-.answer-tags h4,
-.answer-footer h4 {
-  margin: 0.4rem 0 0.2rem;
-  font-size: 0.9rem;
-  color: #111827;
-}
-
-.answer-question p,
-.answer-body p,
-.answer-footer p {
-  margin: 0.1rem 0;
-}
-
-.answer-tags {
-  margin-top: 0.4rem;
-}
-
-.tag-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-}
-
-.tag-item {
-  font-size: 0.75rem;
-  padding: 0.1rem 0.6rem;
-  border-radius: 999px;
-  background-color: #ecfdf3;
-  color: #166534;
-}
-
-.answer-footer {
-  margin-top: 0.5rem;
-  padding-top: 0.4rem;
-  border-top: 1px dashed #e5e7eb;
-}
-
-.answer-footer .hint {
-  font-size: 0.8rem;
-  color: #6b7280;
-}
-
-/* プレースホルダ */
-.placeholder {
-  font-size: 0.9rem;
-  color: #6b7280;
-}
-
-.answer-empty {
-  background-color: #fef2f2;
-  border-color: #fecaca;
-}
-
-/* 候補リスト */
-.candidates-output {
-  font-size: 0.9rem;
-}
-
-.candidate-list {
-  list-style: none;
   margin: 0;
   padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  background: #f6f8f7;
 }
 
-.candidate-item {
-  border-radius: 0.6rem;
-  border: 1px solid #e5e7eb;
-  padding: 0.5rem 0.6rem;
-  background-color: #f9fafb;
-}
-
-.candidate-item + .candidate-item {
-  margin-top: 0.45rem;
-}
-
-.candidate-header {
-  display: flex;
-  justify-content: space-between;
-  gap: 0.3rem;
-  font-size: 0.8rem;
-  color: #4b5563;
-}
-
-.candidate-question {
-  margin-top: 0.25rem;
-}
-
-.candidate-tags {
-  margin-top: 0.35rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem;
-}
-
-.tag-pill {
-  font-size: 0.7rem;
-  padding: 0.1rem 0.6rem;
-  border-radius: 999px;
-  background-color: #eff6ff;
-  color: #1d4ed8;
-}
-
-/* フッタ */
-.app-footer {
-  border-top: 1px solid #e5e7eb;
-  background-color: #f9fafb;
-  padding: 0.8rem 1rem 1.2rem;
-}
-
-.app-footer-inner {
-  max-width: 960px;
+.container {
+  max-width: 680px;
   margin: 0 auto;
-  font-size: 0.8rem;
-  color: #6b7280;
+  padding: 20px;
+}
+
+h1 {
   text-align: center;
+  margin-bottom: 5px;
+  font-size: 28px;
+}
+
+.desc {
+  text-align: center;
+  color: #555;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.input-area {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+#question {
+  flex: 1;
+  padding: 12px;
+  font-size: 16px;
+}
+
+#searchBtn {
+  padding: 12px 16px;
+  background: #48a868;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+#searchBtn:hover {
+  background: #3f945d;
+}
+
+.answer-box {
+  background: white;
+  padding: 16px;
+  border-radius: 6px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+  min-height: 150px;
+}
+
+.answer-box h3 {
+  margin-top: 0;
+}
+
+footer {
+  text-align: center;
+  margin-top: 40px;
+  color: #888;
+  font-size: 13px;
 }
