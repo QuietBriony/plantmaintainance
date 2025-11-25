@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Garden-QA Engine（沖縄ローカル造園QA）</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="app-header-inner">
+      <h1>Garden-QA Engine</h1>
+      <p class="app-subtitle">沖縄ローカル対応・造園QA Webアプリ（クライアントサイドのみ）</p>
+      <div id="db-status" class="db-status">DB読み込み中...</div>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <section class="qa-panel">
+      <h2>質問入力</h2>
+      <form id="question-form" class="question-form">
+        <label for="question-input" class="field-label">
+          造園・庭づくりに関する質問を入力してください（沖縄ローカル想定）
+        </label>
+        <textarea
+          id="question-input"
+          class="question-input"
+          rows="4"
+          placeholder="例）海に近い庭で、潮風に強い植栽には何がありますか？"
+        ></textarea>
+
+        <div class="form-actions">
+          <button type="submit" id="ask-button" class="primary-button">
+            質問する
+          </button>
+          <span id="loading-indicator" class="loading-indicator" aria-live="polite"></span>
+        </div>
+      </form>
+    </section>
+
+    <section class="answer-panel">
+      <h2>回答</h2>
+      <div id="answer-output" class="answer-output">
+        <p class="placeholder">
+          質問を送信すると、このエリアに回答が表示されます。
+        </p>
+      </div>
+    </section>
+
+    <section class="candidates-panel">
+      <h2>関連候補（DB内マッチ）</h2>
+      <div id="candidates-output" class="candidates-output">
+        <p class="placeholder">
+          近い内容のQA候補が最大3件まで表示されます。
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <div class="app-footer-inner">
+      <small>
+        Garden-QA Engine / JSON DBベースのクライアントサイドQAエンジン<br />
+        Data Source: <span id="db-source-label">garden-db.json（GitHub Raw想定）</span>
+      </small>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
