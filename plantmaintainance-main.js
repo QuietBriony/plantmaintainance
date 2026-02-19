@@ -9,7 +9,7 @@ let activeCategory = "all";
 // DB読み込み
 async function loadDB() {
   if (gardenDB) return gardenDB;
-  const res = await fetch("./garden-db.json", { cache: "no-store" });
+  const res = await fetch("./plantmaintainance-db.json", { cache: "no-store" });
   gardenDB = await res.json();
   return gardenDB;
 }
