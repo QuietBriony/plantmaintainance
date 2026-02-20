@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Garden-QA Engine</title>
-  <link rel="stylesheet" href="./plantmaintainance-style.css?v=20260220a" />
+  <link rel="stylesheet" href="./style.css?v=20260220b" />
 </head>
 <body>
   <div class="container">
@@ -17,20 +17,14 @@
       </p>
     </header>
 
-    <!-- カテゴリボタン -->
     <div class="category-bar">
       <button class="cat-btn active" data-category="all">すべて</button>
       <button class="cat-btn" data-category="tree">高木・シンボル</button>
       <button class="cat-btn" data-category="shrub">低木・生垣</button>
-      <!-- 将来用：芝・資材など
-      <button class="cat-btn" data-category="grass">芝・地被</button>
-      <button class="cat-btn" data-category="material">資材・施工</button>
-      -->
     </div>
 
-    <!-- 質問入力 -->
     <div class="input-area">
-      <input 
+      <input
         id="question"
         type="text"
         placeholder="例：シマトネリコ 大きくなりすぎる / ガジュマル 庭に植えていい？"
@@ -38,7 +32,6 @@
       <button id="searchBtn">検索</button>
     </div>
 
-    <!-- 2カラム：左=候補、右=回答 -->
     <div class="main-layout">
       <section class="suggestion-panel">
         <h2>🌱 このカテゴリの主な植物</h2>
@@ -50,7 +43,7 @@
       <section class="answer-panel">
         <h2>💬 回答エリア</h2>
         <div id="answer" class="answer-box">
-          <p>植物名や「剪定」「海沿い」「日陰」など、気になる条件を入れて聞いてみてください。</p>
+          <p>起動中...</p>
         </div>
       </section>
     </div>
@@ -60,6 +53,6 @@
     </footer>
   </div>
 
-  <script src="./plantmaintainance-main.js?v=20260220a"></script>
+  <script src="./main.js?v=20260220b"></script>
 </body>
 </html>
