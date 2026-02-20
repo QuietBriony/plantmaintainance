@@ -1,0 +1,204 @@
+/* style.css - Garden-QA Engine v2 */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  background: #f6f8f7;
+  color: #222;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+header h1 {
+  text-align: center;
+  margin: 8px 0 4px;
+  font-size: 26px;
+}
+
+header .desc {
+  text-align: center;
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 16px;
+}
+
+header .desc code {
+  background: #eee;
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
+/* カテゴリバー */
+
+.category-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.cat-btn {
+  border: 1px solid #c0d4c5;
+  background: #ffffff;
+  padding: 6px 10px;
+  font-size: 13px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.cat-btn.active {
+  background: #48a868;
+  color: #fff;
+  border-color: #48a868;
+}
+
+/* 入力エリア */
+
+.input-area {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+#question {
+  flex: 1;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+#searchBtn {
+  padding: 10px 16px;
+  background: #48a868;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+#searchBtn:hover {
+  background: #3f945d;
+}
+
+/* メインレイアウト */
+
+.main-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* 左：候補 */
+
+.suggestion-panel {
+  flex: 1 1 260px;
+  background: #ffffff;
+  padding: 12px;
+  border-radius: 6px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.06);
+}
+
+.suggestion-panel h2 {
+  margin-top: 0;
+  font-size: 16px;
+}
+
+.suggestions ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.suggestions li {
+  margin-bottom: 6px;
+}
+
+.suggestion-btn {
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: #f0f4f1;
+  padding: 6px 8px;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.suggestion-btn:hover {
+  background: #e1eee5;
+}
+
+/* 右：回答 */
+
+.answer-panel {
+  flex: 2 1 360px;
+}
+
+.answer-panel h2 {
+  margin-top: 0;
+  font-size: 16px;
+}
+
+.answer-box {
+  background: #ffffff;
+  padding: 14px;
+  border-radius: 6px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.06);
+  min-height: 180px;
+  font-size: 14px;
+}
+
+.answer-box h3 {
+  margin-top: 0;
+}
+
+.answer-box ul {
+  padding-left: 18px;
+}
+
+.question-view {
+  font-size: 13px;
+  color: #666;
+}
+
+/* フッタ */
+
+footer {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 12px;
+  color: #888;
+}
+
+/* スマホ対応 */
+
+@media (max-width: 640px) {
+  .input-area {
+    flex-direction: column;
+  }
+
+  #searchBtn {
+    width: 100%;
+  }
+
+  .main-layout {
+    flex-direction: column;
+  }
+
+  .suggestion-panel,
+  .answer-panel {
+    flex: 1 1 100%;
+  }
+}
