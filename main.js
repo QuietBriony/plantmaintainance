@@ -9,9 +9,17 @@ let activeCategory = "all";
 // DB読み込み
 async function loadDB() {
   if (gardenDB) return gardenDB;
-  const res = await fetch("./plantmaintain-db.json", { cache: "no-store" });
-  gardenDB = await res.json();
-  return gardenDB;
+  try {
+    const res = await fetch("plantmaintain-db.json", { cache: "no-store" });
+    if (!res.ok) throw new Error(`DB fetch failed: ${res.status} ${res.statusText}`);
+    gardenDB = await res.json();
+    return gardenDB;
+  } catch (e) {
+    console.error(e);
+    const s = document.getElementById("suggestions");
+    if (s) s.innerHTML = `<p style="color:#b00020;">DB読み込み失敗: ${String(e)}</p>`;
+    return null;
+  }
 }
 
 // 文字正規化（ひらがな寄せ・空白削除など）
@@ -232,6 +240,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // DB読み込み＆初期候補表示
   const db = await loadDB();
-  updateCategoryButtons();
-  renderSuggestions(db, activeCategory);
-});
+if (!db) return;
+updateCategoryButtons();
+renderSuggestions(db, activeCategory);
