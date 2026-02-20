@@ -243,3 +243,4 @@ document.addEventListener("DOMContentLoaded", async () => {
 if (!db) return;
 updateCategoryButtons();
 renderSuggestions(db, activeCategory);
+});
