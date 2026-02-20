@@ -6,12 +6,34 @@
 let gardenDB = null;
 let activeCategory = "all";
 
+function renderSuggestionError(message) {
+  const el = document.getElementById("suggestions");
+  if (!el) return;
+  el.innerHTML = `<p>⚠️ データ読み込みに失敗しました。<br>${message}</p>`;
+}
+
 // DB読み込み
 async function loadDB() {
   if (gardenDB) return gardenDB;
-  const res = await fetch("./garden-db.json", { cache: "no-store" });
-  gardenDB = await res.json();
-  return gardenDB;
+
+  try {
+    const res = await fetch("./plantmaintain-db.json", { cache: "no-store" });
+    if (!res.ok) {
+      throw new Error(`DB fetch failed: ${res.status} ${res.statusText}`);
+    }
+
+    const parsed = await res.json();
+    if (!parsed || !Array.isArray(parsed.items)) {
+      throw new Error("DB format is invalid: items 配列が見つかりません");
+    }
+
+    gardenDB = parsed;
+    return gardenDB;
+  } catch (err) {
+    console.error("[Garden-QA] DB load error", err);
+    renderSuggestionError(err instanceof Error ? err.message : "不明なエラー");
+    return null;
+  }
 }
 
 // 文字正規化（ひらがな寄せ・空白削除など）
@@ -186,6 +208,11 @@ async function runSearch() {
   }
 
   const db = await loadDB();
+  if (!db) {
+    answerBox.innerHTML = "データ読み込みに失敗したため、検索できませんでした。";
+    return;
+  }
+
   const hits = searchItems(question, db, activeCategory);
   renderAnswer(question, hits);
 }
@@ -223,6 +250,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       activeCategory = btn.getAttribute("data-category") || "all";
       updateCategoryButtons();
       const db = await loadDB();
+      if (!db) {
+        document.getElementById("answer").innerHTML =
+          "カテゴリ切り替え時にデータ読み込みに失敗しました。";
+        return;
+      }
       renderSuggestions(db, activeCategory);
       // カテゴリ切り替え時、回答欄は軽くリセット
       document.getElementById("answer").innerHTML =
@@ -233,5 +265,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   // DB読み込み＆初期候補表示
   const db = await loadDB();
   updateCategoryButtons();
+  if (!db) {
+    document.getElementById("answer").innerHTML =
+      "初期化時にデータ読み込みに失敗しました。時間をおいて再読み込みしてください。";
+    return;
+  }
   renderSuggestions(db, activeCategory);
 });
