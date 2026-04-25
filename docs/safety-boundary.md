@@ -14,6 +14,13 @@ This repository is intended for observation support and consultation preparation
 - Not a medical advice system.
 - Not an agrochemical or pesticide prescription tool.
 
+## Explicit non-diagnostic limits
+
+- No definitive diagnosis from photos/text alone.
+- No final hazardous-tree judgment from app outputs.
+- No pesticide/herbicide prescription.
+- No product, dose, dilution, or timing recommendation for chemical use.
+
 ## Required communication style
 
 Any user-facing guidance should:
@@ -25,9 +32,10 @@ Any user-facing guidance should:
 
 ## Escalation intent
 
-Future triage flows should explicitly direct users to professional inspection for:
+Future triage flows should explicitly direct users to qualified professionals or relevant road/tree managers for:
 
 - potential structural/safety hazards,
+- public-safety risk around roads, sidewalks, schools, and utilities,
 - high-value or protected trees,
 - rapidly worsening conditions,
 - suspected regulated pest/disease concerns.

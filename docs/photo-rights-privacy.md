@@ -17,6 +17,12 @@ Before enabling contribution/publication, define and enforce:
 4. Takedown/removal procedure.
 5. Jurisdiction-aware handling for minors/private property concerns.
 
+## Privacy controls required before publication
+
+- Remove EXIF/GPS metadata before any publication.
+- Avoid faces, vehicle plates, exact addresses, and private-property identifiers.
+- A deletion/takedown request path must exist before publication.
+
 ## Minimum contributor declarations (future)
 
 Contributors should attest that they:

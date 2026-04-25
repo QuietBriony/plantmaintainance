@@ -13,6 +13,8 @@ This file defines handling principles before formal case schema implementation.
 - Purpose limitation: use case data only for consultation support objectives.
 - Safety-first language: avoid storing fields framed as definitive diagnosis.
 - Separation of concerns: keep case records separate from static Q&A content.
+- Do not store exact address/GPS unless a future policy explicitly allows it.
+- Case records are observation notes, not diagnosis records.
 
 ## Operational baseline for future implementation
 
